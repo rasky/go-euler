@@ -43,7 +43,7 @@ func Primes(max int32) chan int32 {
 				continue
 			}
 			ch <- y
-			for z := y; z <= max; z += y {
+			for z := y + y; z <= max; z += y {
 				sieve.Set(z)
 			}
 		}
@@ -58,20 +58,19 @@ func Factors(x int64) chan int32 {
 	go func() {
 		defer close(ch)
 
-		limit := i64.Sqrt(x)
-
-		if x&1 == 0 {
+		for x&1 == 0 {
 			x = x >> 1
-			limit = i64.Sqrt(x)
 			ch <- 2
 		}
-
+		limit := i64.Sqrt(x)
 		for y := range Primes(int32(limit)) {
-			if (x % int64(y)) == 0 {
+			for (x % int64(y)) == 0 {
 				x = x / int64(y)
-				limit = i64.Sqrt(x)
 				ch <- y
 			}
+		}
+		if x != 1 {
+			ch <- int32(x)
 		}
 	}()
 
