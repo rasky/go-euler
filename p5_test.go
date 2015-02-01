@@ -12,10 +12,7 @@ func TestP5(t *testing.T) {
 	allfactors := make(map[int32]int32)
 
 	for i := 2; i <= 20; i++ {
-		factors := make(map[int32]int32)
-		for f := range natural.Factors(int64(i)) {
-			factors[f] += 1
-		}
+		factors := natural.Factorize(int64(i))
 		for k, v := range factors {
 			if allfactors[k] < v {
 				allfactors[k] = v
