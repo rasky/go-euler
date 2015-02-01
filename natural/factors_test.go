@@ -54,3 +54,10 @@ func TestFactors(t *testing.T) {
 		t.Error("invalid factors", fact)
 	}
 }
+
+func TestNumDivisors(t *testing.T) {
+
+	if NumDivisors(28) != 6 {
+		t.Error(NumDivisors(28))
+	}
+}
