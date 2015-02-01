@@ -1,11 +1,11 @@
-package main
+package euler
 
 import (
 	"euler/natural"
-	"fmt"
+	"testing"
 )
 
-func main() {
+func TestP2(t *testing.T) {
 	sum := 0
 	for i := range natural.Fibo() {
 		if i >= 4000000 {
@@ -15,5 +15,8 @@ func main() {
 			sum += i
 		}
 	}
-	fmt.Println(sum)
+
+	if sum != 4613732 {
+		t.Fail()
+	}
 }
