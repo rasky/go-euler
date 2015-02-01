@@ -83,14 +83,3 @@ func Factorize(x int64) map[int32]int32 {
 
 	return factors
 }
-
-func NumDivisors(x int64) int {
-
-	factors := Factorize(x)
-
-	num := 1
-	for _, v := range factors {
-		num *= int(v) + 1
-	}
-	return num
-}
