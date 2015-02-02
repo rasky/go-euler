@@ -1,7 +1,6 @@
 package euler
 
 import (
-	"fmt"
 	"sort"
 	"strings"
 	"testing"
@@ -266,7 +265,9 @@ func TestP54(t *testing.T) {
 		}
 	}
 
-	fmt.Println(p1win)
+	if p1win != 346 {
+		t.Error(p1win)
+	}
 }
 
 const p54hands = `
