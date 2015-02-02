@@ -15,7 +15,7 @@ func p27PrimeSeqLen(a, b int64) int64 {
 	for isPrime(n*n + a*n + b) {
 		n++
 	}
-	return n - 1
+	return n
 }
 
 func TestP27(t *testing.T) {

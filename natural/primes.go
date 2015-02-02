@@ -82,7 +82,7 @@ func IsPrime(p int64) bool {
 	if p%2 == 0 || p%3 == 0 {
 		return false
 	}
-	for i := int64(5); i*i < p; i += 6 {
+	for i := int64(5); i*i <= p; i += 6 {
 		if p%i == 0 || p%(i+2) == 0 {
 			return false
 		}
