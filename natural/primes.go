@@ -74,3 +74,18 @@ func Primes(max int32) chan int32 {
 	}()
 	return ch
 }
+
+func IsPrime(p int) bool {
+	if p <= 3 {
+		return p >= 2
+	}
+	if p%2 == 0 || p%3 == 0 {
+		return false
+	}
+	for i := 5; i*i < p; i += 6 {
+		if p%i == 0 || p%(i+2) == 0 {
+			return false
+		}
+	}
+	return true
+}
