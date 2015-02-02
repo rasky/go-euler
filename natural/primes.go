@@ -30,7 +30,7 @@ func (b *BitArray) Shrink(idx int) {
 var sieve *BitArray
 var lastSieveFactor int32
 
-const maxPrime = 100000000
+const maxPrime = 2 * 1000 * 1000
 
 var allPrimes []int32
 
