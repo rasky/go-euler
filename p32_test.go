@@ -1,7 +1,7 @@
 package euler
 
 import (
-	"strconv"
+	"euler/natural"
 
 	"code.google.com/p/intmath/intgr"
 
@@ -38,24 +38,10 @@ func p32NumDigits(a int) int {
 func p32PanDigitalProduct(a, b int) int {
 	c := a * b
 
-	if p32NumDigits(a)+p32NumDigits(b)+p32NumDigits(c) != 9 {
-		return 0
+	if natural.PandigitalMulti([]int{a, b, c}, 9, false) {
+		return c
 	}
-
-	sa := strconv.Itoa(a)
-	sb := strconv.Itoa(b)
-	sc := strconv.Itoa(c)
-
-	var digits [10]bool
-	digits[0] = true // we don't want '0'
-	for _, d := range sa + sb + sc {
-		dc := int(d - '0')
-		if digits[dc] {
-			return 0
-		}
-		digits[dc] = true
-	}
-	return c
+	return 0
 }
 
 func TestP32(t *testing.T) {
