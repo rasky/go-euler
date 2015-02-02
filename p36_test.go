@@ -16,9 +16,9 @@ func p36Palindromic(dig []byte) bool {
 
 func TestP36(t *testing.T) {
 
-	sum := 0
+	sum := int64(0)
 
-	for i := 1; i < 1000000; i++ {
+	for i := int64(1); i < 1000000; i++ {
 		if !p36Palindromic(natural.DigitsWithBase(i, 10)) {
 			continue
 		}

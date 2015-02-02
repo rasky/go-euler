@@ -2,11 +2,9 @@ package natural
 
 import "code.google.com/p/intmath/i64"
 
-type factors map[int32]int
+func Factors(x int64) chan int64 {
 
-func Factors(x int64) chan int32 {
-
-	ch := make(chan int32)
+	ch := make(chan int64)
 
 	go func() {
 		defer close(ch)
@@ -20,23 +18,23 @@ func Factors(x int64) chan int32 {
 			ch <- 3
 		}
 		limit := i64.Sqrt(x)
-		for y := range Primes(int32(limit)) {
-			for (x % int64(y)) == 0 {
-				x = x / int64(y)
+		for y := range Primes(limit) {
+			for (x % y) == 0 {
+				x = x / y
 				ch <- y
 			}
 		}
 		if x != 1 {
-			ch <- int32(x)
+			ch <- x
 		}
 	}()
 
 	return ch
 }
 
-func Factorize(x int64) map[int32]int32 {
+func Factorize(x int64) map[int64]int {
 
-	factors := make(map[int32]int32, 32)
+	factors := make(map[int64]int, 32)
 	for f := range Factors(x) {
 		factors[f] += 1
 	}

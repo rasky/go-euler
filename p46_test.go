@@ -4,13 +4,13 @@ import (
 	"euler/natural"
 	"testing"
 
-	"code.google.com/p/intmath/i32"
+	"code.google.com/p/intmath/i64"
 )
 
 func TestP46(t *testing.T) {
 
-	primes := make([]int32, 0)
-	n := int32(0)
+	primes := make([]int64, 0)
+	n := int64(0)
 
 Loop:
 	for p := range natural.Primes(1000000) {
@@ -22,7 +22,7 @@ Loop:
 			found := false
 			for _, m := range primes[:len(primes)-1] {
 				q := (n - m) / 2
-				sq := i32.Sqrt(q)
+				sq := i64.Sqrt(q)
 				if sq*sq == q {
 					found = true
 					break

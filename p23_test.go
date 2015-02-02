@@ -5,10 +5,10 @@ import (
 	"testing"
 )
 
-func p23abundant(x int) bool {
-	sum := 0
-	for _, d := range natural.Divisors(int64(x)) {
-		sum += d
+func p23abundant(x int64) bool {
+	sum := int64(0)
+	for _, d := range natural.Divisors(x) {
+		sum += int64(d)
 	}
 	return (sum > x)
 }
@@ -21,19 +21,19 @@ func TestP23(t *testing.T) {
 
 	ba := natural.NewBitArray(60000)
 
-	abund := make([]int, 0, 100)
-	for i := 12; i <= 28123; i++ {
+	abund := make([]int64, 0, 100)
+	for i := int64(12); i <= 28123; i++ {
 		if p23abundant(i) {
 			abund = append(abund, i)
 			for _, a := range abund {
-				ba.Set(int32(a + i))
+				ba.Set(a + i)
 			}
 		}
 	}
 
-	sum := 0
-	for i := 1; i <= 28123; i++ {
-		if !ba.Get(int32(i)) {
+	sum := int64(0)
+	for i := int64(1); i <= 28123; i++ {
+		if !ba.Get(i) {
 			sum += i
 		}
 	}

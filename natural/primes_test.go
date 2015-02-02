@@ -7,11 +7,11 @@ import (
 
 func TestPrimes(t *testing.T) {
 
-	primes := make([]int32, 0, 32)
+	primes := make([]int64, 0, 32)
 	for p := range Primes(1000) {
 		primes = append(primes, p)
 	}
-	exp := []int32{
+	exp := []int64{
 		2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
 		73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173,
 		179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281,
@@ -28,11 +28,11 @@ func TestPrimes(t *testing.T) {
 
 func TestSumPrimes(t *testing.T) {
 
-	primes := make(map[int32]bool)
+	primes := make(map[int64]bool)
 
 	sum := int64(0)
 	for p := range Primes(2000000) {
-		sum += int64(p)
+		sum += p
 		if primes[p] {
 			t.Error("duplicate:", p)
 		}

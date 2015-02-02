@@ -6,7 +6,7 @@ import (
 )
 
 func TestP3(t *testing.T) {
-	var f int32
+	var f int64
 	for f = range natural.Factors(600851475143) {
 	}
 

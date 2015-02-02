@@ -27,11 +27,11 @@ func PandigitalDigits(dig []byte, n int, zero bool) bool {
 }
 
 // True if x is n-pandigital
-func Pandigital(x int, n int, zero bool) bool {
+func Pandigital(x int64, n int, zero bool) bool {
 	return PandigitalDigits(Digits(x), n, zero)
 }
 
-func PandigitalMulti(x []int, n int, zero bool) bool {
+func PandigitalMulti(x []int64, n int, zero bool) bool {
 	dig := make([]byte, 0, 9)
 	for _, x1 := range x {
 		dig = append(dig, Digits(x1)...)

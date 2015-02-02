@@ -6,7 +6,7 @@ import (
 )
 
 func TestP41(t *testing.T) {
-	max := 0
+	max := int64(0)
 
 	digits := []byte{1, 2, 3, 4, 5, 6, 7}
 	loop := true

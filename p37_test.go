@@ -7,9 +7,9 @@ import (
 
 func TestP37(t *testing.T) {
 
-	primes := make(map[int32]interface{})
+	primes := make(map[int64]interface{})
 	for p := range natural.Primes(1000000) {
-		primes[p] = nil
+		primes[int64(p)] = nil
 	}
 
 	sum := 0
@@ -19,17 +19,17 @@ func TestP37(t *testing.T) {
 			continue
 		}
 
-		dig := natural.Digits(int(p))
+		dig := natural.Digits(p)
 
 		truncatable := true
 		for i := 1; i < len(dig); i++ {
 			p2 := natural.FromDigits(dig[i:])
-			if _, found := primes[int32(p2)]; !found {
+			if _, found := primes[p2]; !found {
 				truncatable = false
 				break
 			}
 			p3 := natural.FromDigits(dig[:len(dig)-i])
-			if _, found := primes[int32(p3)]; !found {
+			if _, found := primes[p3]; !found {
 				truncatable = false
 				break
 			}

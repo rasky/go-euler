@@ -12,11 +12,11 @@ func NewBitArray(sz int) *BitArray {
 	}
 }
 
-func (b *BitArray) Set(idx int32) {
+func (b *BitArray) Set(idx int64) {
 	b.bits[idx/8] |= 1 << (uint(idx) & 7)
 }
 
-func (b *BitArray) Get(idx int32) bool {
+func (b *BitArray) Get(idx int64) bool {
 	return (b.bits[idx/8] & (1 << (uint(idx) & 7))) != 0
 }
 
@@ -28,25 +28,25 @@ func (b *BitArray) Shrink(idx int) {
 }
 
 var sieve *BitArray
-var lastSieveFactor int32
+var lastSieveFactor int64
 
 const maxPrime = 2 * 1000 * 1000
 
-var allPrimes []int32
+var allPrimes []int64
 
 func init() {
 	sieve = NewBitArray(maxPrime)
-	allPrimes = make([]int32, 1, 1000000)
+	allPrimes = make([]int64, 1, 1000000)
 	allPrimes[0] = 2
-	lastSieveFactor = 1
+	lastSieveFactor = int64(1)
 }
 
-func Primes(max int32) chan int32 {
+func Primes(max int64) chan int64 {
 	if max > maxPrime {
 		panic(errors.New("requested too big prime for sieve"))
 	}
 
-	ch := make(chan int32, 16)
+	ch := make(chan int64, 16)
 	go func() {
 		defer close(ch)
 
@@ -75,14 +75,14 @@ func Primes(max int32) chan int32 {
 	return ch
 }
 
-func IsPrime(p int) bool {
+func IsPrime(p int64) bool {
 	if p <= 3 {
 		return p >= 2
 	}
 	if p%2 == 0 || p%3 == 0 {
 		return false
 	}
-	for i := 5; i*i < p; i += 6 {
+	for i := int64(5); i*i < p; i += 6 {
 		if p%i == 0 || p%(i+2) == 0 {
 			return false
 		}

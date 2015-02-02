@@ -7,10 +7,10 @@ import (
 	"code.google.com/p/intmath/intgr"
 )
 
-var divMemo map[int][]int
+var divMemo map[int64][]int
 
 func init() {
-	divMemo = make(map[int][]int)
+	divMemo = make(map[int64][]int)
 }
 
 func NumDivisors(x int64) int {
@@ -24,7 +24,7 @@ func NumDivisors(x int64) int {
 	return num
 }
 
-func genDivisors(x int, p []int, rep []int) []int {
+func genDivisors(x int64, p []int, rep []int) []int {
 	if x == 1 {
 		return []int{1}
 	}
@@ -38,7 +38,7 @@ func genDivisors(x int, p []int, rep []int) []int {
 		panic("invalid arguments")
 	}
 
-	xq := x / intgr.Pow(p[n], rep[n])
+	xq := x / int64(intgr.Pow(p[n], rep[n]))
 
 	div := genDivisors(xq, p[:n], rep[:n])
 	ret := make([]int, len(div)*(rep[n]+1))
@@ -67,9 +67,9 @@ func Divisors(x int64) []int {
 	}
 	sort.Ints(p)
 	for _, f := range p {
-		rep = append(rep, int(factors[int32(f)]))
+		rep = append(rep, int(factors[int64(f)]))
 	}
 
-	div := genDivisors(int(x), p, rep)
+	div := genDivisors(x, p, rep)
 	return div[0 : len(div)-1]
 }
