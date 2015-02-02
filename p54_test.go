@@ -265,7 +265,7 @@ func TestP54(t *testing.T) {
 		}
 	}
 
-	if p1win != 346 {
+	if p1win != 376 {
 		t.Error(p1win)
 	}
 }
