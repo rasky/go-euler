@@ -1,2 +1,5 @@
 language: go
-
+install:
+	go get -u github.com/tools/godep
+run:
+	godep go test -test.v ./...
