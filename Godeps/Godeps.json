@@ -1,0 +1,29 @@
+{
+	"ImportPath": "euler",
+	"GoVersion": "go1.4.1",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "code.google.com/p/intmath/constants/c32",
+			"Comment": "null-26",
+			"Rev": "475a3c6f4069fd319e077cf7ce272c098e4da12c"
+		},
+		{
+			"ImportPath": "code.google.com/p/intmath/constants/c64",
+			"Comment": "null-26",
+			"Rev": "475a3c6f4069fd319e077cf7ce272c098e4da12c"
+		},
+		{
+			"ImportPath": "code.google.com/p/intmath/i64",
+			"Comment": "null-26",
+			"Rev": "475a3c6f4069fd319e077cf7ce272c098e4da12c"
+		},
+		{
+			"ImportPath": "code.google.com/p/intmath/intgr",
+			"Comment": "null-26",
+			"Rev": "475a3c6f4069fd319e077cf7ce272c098e4da12c"
+		}
+	]
+}
