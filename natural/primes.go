@@ -38,7 +38,7 @@ func init() {
 	sieve = NewBitArray(maxPrime)
 	allPrimes = make([]int32, 1, 1000000)
 	allPrimes[0] = 2
-	lastSieveFactor = 3
+	lastSieveFactor = 1
 }
 
 func Primes(max int32) chan int32 {
@@ -58,12 +58,12 @@ func Primes(max int32) chan int32 {
 			ch <- p
 		}
 
-		for y := lastSieveFactor; y <= max; y += 2 {
+		for y := lastSieveFactor + 2; y <= max; y += 2 {
 			if sieve.Get(y) {
 				continue
 			}
 
-			for z := y + y; z <= max; z += y {
+			for z := y + y; z < maxPrime; z += y {
 				sieve.Set(z)
 			}
 			lastSieveFactor = y
