@@ -10,7 +10,7 @@ func TestP40(t *testing.T) {
 	dig := make([]byte, 1, 1100000)
 	for i := int64(1); len(dig) <= 1000000; i++ {
 		idig := natural.Digits(i)
-		natural.Reverse(idig)
+		natural.DigitsReverse(idig)
 		dig = append(dig, idig...)
 	}
 

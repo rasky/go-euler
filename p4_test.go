@@ -1,19 +1,9 @@
 package euler
 
 import (
-	"strconv"
+	"euler/natural"
 	"testing"
 )
-
-func IsPalindromic(n int) bool {
-	s := strconv.Itoa(n)
-	for i := 0; i < len(s)/2; i++ {
-		if s[i] != s[len(s)-i-1] {
-			return false
-		}
-	}
-	return true
-}
 
 func TestP4(t *testing.T) {
 
@@ -27,7 +17,7 @@ func TestP4(t *testing.T) {
 		}
 		for z2 := 999; z2 >= limit; z2-- {
 			z = z1 * z2
-			if z > max && IsPalindromic(z) {
+			if z > max && natural.DigitsPalindromic(natural.Digits(int64(z))) {
 				max = z
 			}
 		}

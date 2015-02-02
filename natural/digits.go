@@ -1,6 +1,10 @@
 package natural
 
-import "reflect"
+import (
+	"reflect"
+
+	"code.google.com/p/intmath/intgr"
+)
 
 func DigitsWithBase(x int64, base int) []byte {
 	digits := make([]byte, 0, 8)
@@ -27,8 +31,43 @@ func FromDigits(dig []byte) int64 {
 func FromDigitsReverse(dig []byte) int64 {
 	dig2 := make([]byte, len(dig))
 	copy(dig2, dig)
-	Reverse(dig2)
+	DigitsReverse(dig2)
 	return FromDigits(dig2)
+}
+
+// Compute x+y in digit form
+func DigitsAdd(x []byte, y []byte) []byte {
+
+	n := intgr.Max(len(x), len(y))
+	res := make([]byte, n+1)
+
+	c := byte(0)
+	for i := 0; i < n; i++ {
+		xx, yy := byte(0), byte(0)
+		if i < len(x) {
+			xx = x[i]
+		}
+		if i < len(y) {
+			yy = y[i]
+		}
+		v := xx + yy + c
+		res[i] = v % 10
+		c = v / 10
+	}
+	res[n] = c
+	if c == 0 {
+		return res[:n]
+	}
+	return res
+}
+
+func DigitsPalindromic(dig []byte) bool {
+	for i := 0; i < len(dig)/2; i++ {
+		if dig[i] != dig[len(dig)-i-1] {
+			return false
+		}
+	}
+	return true
 }
 
 // Concatenate numbers (eg: Concat({12,34}) == 1234)
@@ -43,7 +82,7 @@ func Concat(x []int64) int64 {
 }
 
 // Reverse digits
-func Reverse(x []byte) {
+func DigitsReverse(x []byte) {
 	l := len(x)
 	for i := 0; i < l/2; i++ {
 		x[i], x[l-i-1] = x[l-i-1], x[i]
@@ -68,7 +107,7 @@ func NextPermutation(x []byte) bool {
 	}
 
 	x[i], x[j] = x[j], x[i]
-	Reverse(x[i+1:])
+	DigitsReverse(x[i+1:])
 	return true
 }
 
