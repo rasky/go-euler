@@ -3,23 +3,23 @@ package natural
 import (
 	"fmt"
 
-	"code.google.com/p/intmath/intgr"
+	"code.google.com/p/intmath/i64"
 )
 
 type Rational struct {
-	Num, Den int
+	Num, Den int64
 }
 
-func GCD(a, b int) int {
-	a = intgr.Abs(a)
-	b = intgr.Abs(b)
+func GCD(a, b int64) int64 {
+	a = i64.Abs(a)
+	b = i64.Abs(b)
 	for b != 0 {
 		a, b = b, a%b
 	}
 	return a
 }
 
-func LCM(a, b int) int {
+func LCM(a, b int64) int64 {
 	return a * b / GCD(a, b)
 }
 
@@ -31,10 +31,9 @@ func (r1 Rational) Equal(r2 Rational) bool {
 func (r1 Rational) Reduce() Rational {
 
 	for f := range Factors(int64(r1.Den)) {
-		fi := int(f)
-		if r1.Num%fi == 0 {
-			r1.Num /= fi
-			r1.Den /= fi
+		if r1.Num%f == 0 {
+			r1.Num /= f
+			r1.Den /= f
 		}
 	}
 	return r1

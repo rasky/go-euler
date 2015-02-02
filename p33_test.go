@@ -10,8 +10,8 @@ func TestP33(t *testing.T) {
 	product := natural.Rational{1, 1}
 	count := 0
 
-	for a := 10; a < 100; a++ {
-		for b := a + 1; b < 100; b++ {
+	for a := int64(10); a < 100; a++ {
+		for b := int64(a + 1); b < 100; b++ {
 
 			f := natural.Rational{a, b}
 
