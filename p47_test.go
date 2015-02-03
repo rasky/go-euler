@@ -1,27 +1,28 @@
 package euler
 
-import (
-	"go-euler/natural"
-	"testing"
-)
+import "testing"
 
 func TestP47(t *testing.T) {
 
-	consecFactors := func(search int) int64 {
+	consecFactors := func(search int) int {
+		sieve := make([]int, 1000000)
 		count := 0
-		n := int64(0)
-		for n = 2; n < 1000000; n++ {
-			factors := natural.Factorize(n)
-			if len(factors) == search {
-				count += 1
+		for i := 2; i < len(sieve); i++ {
+			if sieve[i] == 0 {
+				count = 0
+				for j := i + i; j < len(sieve); j += i {
+					sieve[j]++
+				}
+			} else if sieve[i] == search {
+				count++
 				if count == search {
-					break
+					return i - search + 1
 				}
 			} else {
 				count = 0
 			}
 		}
-		return n - int64(search) + 1
+		return -1
 	}
 
 	c2 := consecFactors(2)
