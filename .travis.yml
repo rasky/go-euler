@@ -1,6 +1,6 @@
 language: go
 install:
     - go get -u github.com/tools/godep
-    - ln -s "$(pwd)" "$GOPATH/src"
+    - PATHS=(${GOPATH//:/ }) ; ln -s "$(pwd)" "${PATHS[0]}/src"
 script:
     godep go test -test.v ./...
