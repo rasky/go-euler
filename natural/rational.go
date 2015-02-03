@@ -42,10 +42,12 @@ func (r1 Rational) Sum(r2 Rational) Rational {
 
 func (r1 Rational) Reduce() Rational {
 
-	for f := range Factors(int64(r1.Den)) {
-		if r1.Num%f == 0 {
-			r1.Num /= f
-			r1.Den /= f
+	for f, n := range Factorize(int64(r1.Den)) {
+		for i := 0; i < n; i++ {
+			if r1.Num%f == 0 {
+				r1.Num /= f
+				r1.Den /= f
+			}
 		}
 	}
 	return r1

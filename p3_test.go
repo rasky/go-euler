@@ -6,11 +6,16 @@ import (
 )
 
 func TestP3(t *testing.T) {
-	var f int64
-	for f = range natural.Factors(600851475143) {
+	factors := natural.Factorize(600851475143)
+
+	max := int64(0)
+	for f, _ := range factors {
+		if max < f {
+			max = f
+		}
 	}
 
-	if f != 6857 {
+	if max != 6857 {
 		t.Fail()
 	}
 }
