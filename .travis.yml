@@ -1,6 +1,6 @@
 language: go
 install:
     - go get -u github.com/tools/godep
-    - ln -s ../go-euler ../../../
+    - ln -s "$(pwd)" "$GOPATH/src"
 script:
     godep go test -test.v ./...
