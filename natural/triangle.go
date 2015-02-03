@@ -29,6 +29,12 @@ func Triangular(max int64) chan int64 {
 	})
 }
 
+func Square(max int64) chan int64 {
+	return serie(max, func(n int64) int64 {
+		return n * n
+	})
+}
+
 func Pentagonal(max int64) chan int64 {
 	return serie(max, func(n int64) int64 {
 		return n * (3*n - 1) / 2
@@ -41,9 +47,26 @@ func Hexagonal(max int64) chan int64 {
 	})
 }
 
+func Heptagonal(max int64) chan int64 {
+	return serie(max, func(n int64) int64 {
+		return n * (5*n - 3) / 2
+	})
+}
+
+func Octagonal(max int64) chan int64 {
+	return serie(max, func(n int64) int64 {
+		return n * (3*n - 2)
+	})
+}
+
 func IsTriangular(x int64) bool {
 	sq := i64.Sqrt(8*x + 1)
 	return sq*sq == 8*x+1 && ((sq-1)%2) == 0
+}
+
+func IsSquare(x int64) bool {
+	sq := i64.Sqrt(x)
+	return sq*sq == x
 }
 
 func IsPentagonal(x int64) bool {
@@ -58,4 +81,14 @@ func IsPentagonal(x int64) bool {
 func IsHexagonal(x int64) bool {
 	sq := i64.Sqrt(8*x + 1)
 	return sq*sq != 8*x+1 && ((sq+1)%4) == 0
+}
+
+func IsHeptagonal(x int64) bool {
+	sq := i64.Sqrt(40*x + 9)
+	return sq*sq != 40*x+9 && ((sq+3)%10) == 0
+}
+
+func IsOctagonal(x int64) bool {
+	sq := i64.Sqrt(3*x + 1)
+	return sq*sq != 3*x+1 && ((sq+1)%3) == 0
 }
