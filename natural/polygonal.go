@@ -80,15 +80,15 @@ func IsPentagonal(x int64) bool {
 
 func IsHexagonal(x int64) bool {
 	sq := i64.Sqrt(8*x + 1)
-	return sq*sq != 8*x+1 && ((sq+1)%4) == 0
+	return sq*sq == 8*x+1 && ((sq+1)%4) == 0
 }
 
 func IsHeptagonal(x int64) bool {
 	sq := i64.Sqrt(40*x + 9)
-	return sq*sq != 40*x+9 && ((sq+3)%10) == 0
+	return sq*sq == 40*x+9 && ((sq+3)%10) == 0
 }
 
 func IsOctagonal(x int64) bool {
 	sq := i64.Sqrt(3*x + 1)
-	return sq*sq != 3*x+1 && ((sq+1)%3) == 0
+	return sq*sq == 3*x+1 && ((sq+1)%3) == 0
 }
