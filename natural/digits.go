@@ -113,8 +113,7 @@ func NextPermutation(x []byte) bool {
 
 func IsPermutationMulti(x1 []byte, x2 [][]byte) bool {
 
-	m1 := make(map[byte]int, 10)
-
+	var m1 [10]int
 	for _, x := range x1 {
 		m1[x]++
 	}
@@ -122,12 +121,9 @@ func IsPermutationMulti(x1 []byte, x2 [][]byte) bool {
 		if len(xx) != len(x1) {
 			return false
 		}
-		m2 := make(map[byte]int, 10)
+		var m2 [10]int
 		for _, x := range xx {
 			m2[x]++
-		}
-		if len(m1) != len(m2) {
-			return false
 		}
 		if !reflect.DeepEqual(m1, m2) {
 			return false
