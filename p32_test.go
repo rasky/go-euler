@@ -1,7 +1,7 @@
 package euler
 
 import (
-	"euler/natural"
+	"go-euler/natural"
 
 	"code.google.com/p/intmath/intgr"
 
