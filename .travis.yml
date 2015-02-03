@@ -1,5 +1,6 @@
 language: go
 install:
     - go get -u github.com/tools/godep
+    - ln -s ../go-euler ../../../
 script:
     godep go test -test.v ./...
