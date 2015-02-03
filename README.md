@@ -1,5 +1,5 @@
-# go-euler
-Project Euler solutions in Go
+# go-euler - Project Euler solutions in Go
+[![Build Status](https://travis-ci.org/rasky/go-euler.svg?branch=master)](https://travis-ci.org/rasky/go-euler)
 
 This repository contains solutions to Project Euler problems written in the Go programming language.
 
