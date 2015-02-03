@@ -5,14 +5,14 @@ This repository contains solutions to Project Euler problems written in the Go p
 
 The package "natural" contains common utilities about natural numbers that are useful in many of those problems,
 while the rest of the repository is structured as a big testsuite. You can use:
-
+```
   $ go test
-
+```
 to run all the problems; obviously, the tests will fail if the solution doesn't match the correct one. If you
 want to have more details, you can activate verbose output:
-
+```
   $ go test -test.v=1
-
+```
 This will also show the execution time of each problem; notice that it also activates some logging from each
 test (I usually log intermediate solutions), so it can be come a little verbose.
 
