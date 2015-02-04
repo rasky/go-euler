@@ -7,8 +7,6 @@ import (
 
 func TestP77(t *testing.T) {
 
-	const target = 10
-
 	primes := make([]int64, 0, 1000)
 	for p := range natural.Primes(10000) {
 		primes = append(primes, p)
