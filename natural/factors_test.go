@@ -5,30 +5,22 @@ import (
 	"testing"
 )
 
-func allFactors(x int64) []int64 {
-	fact := make([]int64, 0, 8)
-	for f := range Factors(x) {
-		fact = append(fact, f)
-	}
-	return fact
-}
-
 func TestFactors(t *testing.T) {
 
-	fact := allFactors(13195)
-	exp := []int64{5, 7, 13, 29}
+	fact := Factorize(13195)
+	exp := map[int64]int{5: 1, 7: 1, 13: 1, 29: 1}
 	if !reflect.DeepEqual(fact, exp) {
 		t.Error("invalid factors", fact)
 	}
 
-	fact = allFactors(14)
-	exp = []int64{2, 7}
+	fact = Factorize(14)
+	exp = map[int64]int{2: 1, 7: 1}
 	if !reflect.DeepEqual(fact, exp) {
 		t.Error("invalid factors", fact)
 	}
 
-	fact = allFactors(48)
-	exp = []int64{2, 2, 2, 2, 3}
+	fact = Factorize(48)
+	exp = map[int64]int{2: 4, 3: 1}
 	if !reflect.DeepEqual(fact, exp) {
 		t.Error("invalid factors", fact)
 	}
