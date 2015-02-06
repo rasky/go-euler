@@ -87,7 +87,7 @@ func TestP83(t *testing.T) {
 
 	matrix = p81ParseMatrix(p81Matrix)
 	sol = solve(matrix, 80)
-	if sol != 2297 {
+	if sol != 425185 {
 		t.Error(sol)
 	}
 
