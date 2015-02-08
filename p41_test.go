@@ -15,7 +15,7 @@ func TestP41(t *testing.T) {
 		if p > max && natural.IsPrime(p) {
 			max = p
 		}
-		loop = natural.NextPermutation(digits)
+		loop = natural.DigitsNextPermutation(digits)
 	}
 
 	if max != 7652413 {

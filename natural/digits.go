@@ -89,7 +89,7 @@ func DigitsReverse(x []byte) {
 	}
 }
 
-func NextPermutation(x []byte) bool {
+func DigitsNextPermutation(x []byte) bool {
 	var i, j int
 	for i = len(x) - 2; i >= 0; i-- {
 		if x[i] < x[i+1] {

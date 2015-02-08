@@ -52,7 +52,7 @@ func AllPandigitals(n int, zero bool) chan []byte {
 		}
 
 		ch <- dig
-		for NextPermutation(dig) {
+		for DigitsNextPermutation(dig) {
 			dig2 := make([]byte, len(dig))
 			copy(dig2, dig)
 			ch <- dig2
