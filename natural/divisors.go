@@ -1,7 +1,6 @@
 package natural
 
 import (
-	"fmt"
 	"sort"
 
 	"code.google.com/p/intmath/intgr"
@@ -34,7 +33,6 @@ func genDivisors(x int64, p []int, rep []int) []int {
 
 	n := len(p) - 1
 	if n != len(rep)-1 {
-		fmt.Println(p, rep)
 		panic("invalid arguments")
 	}
 
