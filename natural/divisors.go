@@ -55,6 +55,10 @@ func genDivisors(x int64, p []int, rep []int) []int {
 }
 
 func Divisors(x int64) []int {
+	if x < 2 {
+		return []int{}
+	}
+
 	factors := Factorize(x)
 
 	p := make([]int, 0, len(factors))
