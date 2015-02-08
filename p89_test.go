@@ -1,7 +1,6 @@
 package euler
 
 import (
-	"fmt"
 	"go-euler/natural"
 	"strings"
 	"testing"
@@ -31,7 +30,9 @@ func TestP89(t *testing.T) {
 		cnt += len(snum) - len(snum2)
 	}
 
-	fmt.Println(cnt)
+	if cnt != 743 {
+		t.Error(cnt)
+	}
 }
 
 const p89Roman = `
