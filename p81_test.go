@@ -1,6 +1,7 @@
 package euler
 
 import (
+	"go-euler/natural"
 	"strconv"
 	"strings"
 	"testing"
@@ -48,7 +49,7 @@ func TestP81(t *testing.T) {
 			case y == 0:
 				matrix[y][x] += matrix[y][x-1]
 			default:
-				matrix[y][x] += Min(matrix[y-1][x], matrix[y][x-1])
+				matrix[y][x] += natural.Min(matrix[y-1][x], matrix[y][x-1])
 			}
 		}
 	}

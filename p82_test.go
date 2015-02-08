@@ -2,16 +2,6 @@ package euler
 
 import "testing"
 
-func Min(args ...int64) int64 {
-	min := args[0]
-	for _, v := range args[1:] {
-		if min > v {
-			min = v
-		}
-	}
-	return min
-}
-
 func TestP82(t *testing.T) {
 
 	solve := func(matrix [][]int64, sz int) {
